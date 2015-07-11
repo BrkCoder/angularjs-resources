@@ -2,12 +2,12 @@
 A list of awesome [AngularJs](http://angularjs.org)  directives, utilities and resources.
 
 Table of contents:
-* [Directive](#directive)
-* [Service](#service)
+* [Directives](#directives)
+* [Services](#services)
 * [Other](#other)
 
-## Directive
+## Directives
 
-## Service
+## Services
 
 ## Other
