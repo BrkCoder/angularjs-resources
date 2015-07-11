@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<head>
+    <title>Directives</title>
+    <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="js/lib/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0rc1/angular-route.min.js"></script>
+    <script src="js/lib/raphael-min.js"></script>
+    <script src="js/lib/justgage.1.0.1.min.js"></script>
+    <script src="js/directives/ng-gage.js"></script>
+    <!--<script src="js/directives/ng-justgage.js"></script>-->
+    <script src="js/app.js"></script>
+    <style type="text/css">
+        .column {
+            width: 500px;
+            height: 200px;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body ng-controller="myController">
+<div class="column">
+    <my-gage id="test1" min=0 max=100 value=70 title="Static Gage"></my-gage>
+</div>
+
+</body>
+</html>
