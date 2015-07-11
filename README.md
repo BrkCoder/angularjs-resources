@@ -5,7 +5,7 @@ Table of contents:
 * [Directive](#directive)
 * [Service](#service)
 * [Other](#other)
-* 
+
 ## Directive
 
 ## Service
