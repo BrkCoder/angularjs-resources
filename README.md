@@ -7,7 +7,7 @@ Table of contents:
 * [Other](#other)
 
 ## Directives
-* ng-justGage:  An AngularJS directive for [justGage](http://justgage.com/) library.
+* [ng-just-gage](https://github.com/BrkCoder/angularjs-resources/blob/master/src/js/directives/ng-gage.js):  An AngularJS directive for [justGage](http://justgage.com/) library.
 ## Services
 
 ## Other
