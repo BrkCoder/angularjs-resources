@@ -19,26 +19,26 @@
 </head>
 <body ng-controller="mainController">
 <div class="column">
-    <my-gage id="indicatorOne" min=0 max=100 value=70 title=" Static Gage"></my-gage>
+    <ng-just-gage id="indicatorOne" min=0 max=100 value=70 title=" Static Gage"></ng-just-gage>
 </div>
 <div class="column">
-    <my-gage id="indicatorTwo" min=0 max=100 value="speed"
+    <ng-just-gage id="indicatorTwo" min=0 max=100 value="speed"
              options = "{
                           title: 'Speed',
                           showMinMax : true
-                         }" ></my-gage>
+                         }" ></ng-just-gage>
 </div>
 <div class="column">
-    <my-gage id="indicatorThree" min="104" max="200" value="heartRate"
+    <ng-just-gage id="indicatorThree" min="104" max="200" value="heartRate"
              options = "{
                           title: 'Heart Rate',
                           showMinMax : true
-                         }"></my-gage>
+                         }"></ng-just-gage>
 </div>
 
 
 <div class="column">
-    <my-gage id="indicatorFour" value="grade" min="55" max="100"
+    <ng-just-gage id="indicatorFour" value="grade" min="55" max="100"
              options = "{
                 title: 'University Grade',
                 levelColors: ['#CE1B21', '#D0532A', '#FFC414', '#85A137'],
@@ -49,12 +49,12 @@
                 refreshAnimationType: 'Bounce',
                 gaugeColor: 'yellow',
                 gaugeWidthScale: 0.2
-             }"></my-gage>
+             }"></ng-just-gage>
 </div>
 
 
 <div class="column">
-    <my-gage id="indicatorFive" value="electorals" min="60" max="540"
+    <ng-just-gage id="indicatorFive" value="electorals" min="60" max="540"
              options = "{
                 title: 'Electoral votes',
                 levelColors: ['#CE1B21', '#D0532A', '#FFC414', '#85A137'],
@@ -64,11 +64,11 @@
                 startAnimationType : '<>',
                 refreshAnimationType: 'bounce',
                 gaugeWidthScale: 0.1
-             }"></my-gage>
+             }"></ng-just-gage>
 </div>
 
 <div class="column">
-    <my-gage id="indicatorSix" value="mandate" min="0" max="120"
+    <ng-just-gage id="indicatorSix" value="mandate" min="0" max="120"
              options = "{
                 title: 'Kenneset Mandates',
                 levelColors: ['#CE1B21', '#D0532A', '#FFC414', '#85A137'],
@@ -78,7 +78,7 @@
                 startAnimationType : '<>',
                 refreshAnimationType: 'linear',
                 gaugeWidthScale: 0.1
-             }"></my-gage>
+             }"></ng-just-gage>
 </div>
 
 </body>

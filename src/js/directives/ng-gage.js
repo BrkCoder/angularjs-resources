@@ -11,7 +11,7 @@
 //const MIN_VALUE = 0;
 //const MAX_VALUE = 0;
 angular.module('ngGage',[])
-    .directive('myGage',['$timeout',function($timeout){
+    .directive('ngJustGage',['$timeout',function($timeout){
 
     return{
         restrict: 'EA', // restricted only to Elements and Attribute components
@@ -82,7 +82,7 @@ angular.module('ngGage',[])
                     }
                 },true);
 
-            })
+            });
         }
     }
 
