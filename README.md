@@ -11,6 +11,7 @@ Table of contents:
 * [ng-dynamic-table](https://www.google.co.il/?gws_rd=ssl) - coming soon :).
 * [ng-c3](https://www.google.co.il/?gws_rd=ssl) - coming soon :).
 * [ng-google-charts](https://www.google.co.il/?gws_rd=ssl) - coming soon :).
+
 ## Services
 
 ## Other
