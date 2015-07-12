@@ -7,7 +7,10 @@ Table of contents:
 * [Other](#other)
 
 ## Directives
-* [ng-just-gage](https://github.com/BrkCoder/angularjs-resources/blob/master/src/js/directives/ng-gage.js):  An AngularJS directive for [justGage](http://justgage.com/) library.
+* [ng-just-gage](https://github.com/BrkCoder/angularjs-resources/blob/master/src/js/directives/ng-gage.js)-  An AngularJS directive for [justGage](http://justgage.com/) library.
+* [ng-dynamic-table](https://www.google.co.il/?gws_rd=ssl) - coming soon :).
+* [ng-c3](https://www.google.co.il/?gws_rd=ssl) - coming soon :).
+* [ng-google-charts](https://www.google.co.il/?gws_rd=ssl) - coming soon :).
 ## Services
 
 ## Other
