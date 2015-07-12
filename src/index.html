@@ -11,15 +11,74 @@
     <script src="js/app.js"></script>
     <style type="text/css">
         .column {
-            width: 500px;
-            height: 200px;
             display: inline-block;
+            width: 550px;
+            height: 200px;
         }
     </style>
 </head>
-<body ng-controller="myController">
+<body ng-controller="mainController">
 <div class="column">
-    <my-gage id="test1" min=0 max=100 value=70 title="Static Gage"></my-gage>
+    <my-gage id="indicatorOne" min=0 max=100 value=70 title=" Static Gage"></my-gage>
+</div>
+<div class="column">
+    <my-gage id="indicatorTwo" min=0 max=100 value="speed"
+             options = "{
+                          title: 'Speed',
+                          showMinMax : true
+                         }" ></my-gage>
+</div>
+<div class="column">
+    <my-gage id="indicatorThree" min="104" max="200" value="heartRate"
+             options = "{
+                          title: 'Heart Rate',
+                          showMinMax : true
+                         }"></my-gage>
+</div>
+
+
+<div class="column">
+    <my-gage id="indicatorFour" value="grade" min="55" max="100"
+             options = "{
+                title: 'University Grade',
+                levelColors: ['#CE1B21', '#D0532A', '#FFC414', '#85A137'],
+                levelGradiant: false,
+                showMinMax: true,
+                label: label,
+                startAnimationType : '<>',
+                refreshAnimationType: 'Bounce',
+                gaugeColor: 'yellow',
+                gaugeWidthScale: 0.2
+             }"></my-gage>
+</div>
+
+
+<div class="column">
+    <my-gage id="indicatorFive" value="electorals" min="60" max="540"
+             options = "{
+                title: 'Electoral votes',
+                levelColors: ['#CE1B21', '#D0532A', '#FFC414', '#85A137'],
+                levelGradiant: false,
+                showMinMax: true,
+                label: label,
+                startAnimationType : '<>',
+                refreshAnimationType: 'bounce',
+                gaugeWidthScale: 0.1
+             }"></my-gage>
+</div>
+
+<div class="column">
+    <my-gage id="indicatorSix" value="mandate" min="0" max="120"
+             options = "{
+                title: 'Kenneset Mandates',
+                levelColors: ['#CE1B21', '#D0532A', '#FFC414', '#85A137'],
+                levelGradiant: false,
+                showMinMax: true,
+                label: label,
+                startAnimationType : '<>',
+                refreshAnimationType: 'linear',
+                gaugeWidthScale: 0.1
+             }"></my-gage>
 </div>
 
 </body>

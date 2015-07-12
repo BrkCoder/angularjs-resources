@@ -29,6 +29,7 @@ angular.module('ngGage',[])
             startAnimationType: '=',
             refreshAnimationTime : '=',
             refreshAnimationType: '=',
+            gaugeWidthScale: '=',
             options: '='
         },
         template:'<div id="{{id}}-gage" class="{{class}}"></div>',
@@ -47,7 +48,8 @@ angular.module('ngGage',[])
                     startAnimationTime: scope.startAnimationTime,
                     startAnimationType: scope.startAnimationType,
                     refreshAnimationTime : scope.refreshAnimationTime,
-                    refreshAnimationType:  scope.refreshAnimationType
+                    refreshAnimationType:  scope.refreshAnimationType,
+                    gaugeWidthScale: scope.gaugeWidthScale || 1
                 };
                 //init scope options
                 if(scope.options){
@@ -61,7 +63,7 @@ angular.module('ngGage',[])
 
                 //define watcher on specific scope elements:  value & max & min
                 scope.$watch('value',function(currentValue){
-                    if(typeof (currentMax) !== "undefined"){
+                    if(typeof (currentValue) !== "undefined"){
                         plot.refresh(currentValue);
                         return true;
                     }else{
@@ -79,19 +81,6 @@ angular.module('ngGage',[])
                         return false;
                     }
                 },true);
-
-
-                scope.$watch('min',function(currentMin){
-                    if(typeof (currentMax) !== "undefined"){
-                        plot.refresh(scope.value,currentMin);
-                    }else{
-                        console.log('current min is undefined!');
-                    }
-                },true);
-
-
-
-
 
             })
         }
