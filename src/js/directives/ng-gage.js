@@ -7,9 +7,6 @@
  * Date Modified: 2-7-16
  * Date Created: 30-6-16
  */
- //define local const variables
-//const MIN_VALUE = 0;
-//const MAX_VALUE = 0;
 angular.module('ngGage',[])
     .directive('ngJustGage',['$timeout',function($timeout){
 
