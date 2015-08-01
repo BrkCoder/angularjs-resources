@@ -11,7 +11,7 @@
  * Technical Comments:
  * First we define to which set of components the directive will be trigger by: Element(E) || Attribute(A) || Class(C).
  * Second we define inner scope for current directive.
- * Third we define template and link function.
+ * Third we define template and link function .
  */
 'use strict';
 angular.module('ngGage',[])

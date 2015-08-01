@@ -27,7 +27,7 @@
  * 9.nextText: The text to display for the next/previous month link.
  * 10.showOn/ShowAnim: When the datepicker should appear. The datepicker can appear when the field receives focus ("focus"),
  * when a button is clicked ("button"), or when either event occurs ("both")/The name of the animation used to show and hide the datepicker.
- * 4 watchers on the following fields: defaultDate/disabled/maxDate/minDate.
+ * 4 watchers on the following fields: defaultDate/disabled/maxDate/minDate .
  */
 'use strict';
 angular.module('ngDatePicker',[]).
