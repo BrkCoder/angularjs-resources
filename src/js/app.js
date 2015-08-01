@@ -19,7 +19,6 @@ angular.module('app', ['ngGage','ngDatePicker']).controller('mainController', fu
     $scope.grade              = 70;
     $scope.mandate            = 6;
     $scope.width              = 0.1;
-    $scope.disabled_val       = false;
     setInterval(function(){
         $scope.$apply(function() {
             $scope.speed = getRandomInt(MIN_VALUE, MAX_VALUE);
@@ -27,7 +26,6 @@ angular.module('app', ['ngGage','ngDatePicker']).controller('mainController', fu
             $scope.electorals = getRandomInt(60, 540);
             $scope.mandate = getRandomInt(4, 120);
             $scope.grade = getRandomInt(55, 100);
-            $scope.disabled_val = !$scope.disabled_val;
         });
     }, REFRESH_TIME);
 });
