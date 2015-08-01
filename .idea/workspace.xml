@@ -44,8 +44,6 @@
       <file leaf-file-name="ng-jquery-datepicker.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/js/directives/ng-jquery-datepicker.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.50460124">
-              <caret line="162" column="21" selection-start-line="162" selection-start-column="21" selection-end-line="162" selection-end-column="21" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
               </folding>
@@ -468,8 +466,6 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/js/directives/ng-jquery-datepicker.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.50460124">
-          <caret line="162" column="21" selection-start-line="162" selection-start-column="21" selection-end-line="162" selection-end-column="21" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
           </folding>
