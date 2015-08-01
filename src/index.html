@@ -97,124 +97,67 @@
                 <div class="col-xs-3 col-sm-offset-1">
                     <div class="input-group   input-group-sm">
                         <span class="input-group-addon" id="basic-addon1">@datum</span>
-                        <ng-jquery-date-picker type="text" class="form-control" id="germanDatePicker" placeholder="'wahlen a datum'"
+                        <ng-jquery-date-picker type="text" class="form-control" id="germanDatePicker" placeholder="'Wahlen Sie ein Datum'"
                                                aria-describedby="basic-addon1" ng-model="date1"
-                                               date-format="mm.dd.yy"
-                                               dayNames=""
-                                               dayNamesShort=""
+                                               date-format="mm.dd.y"
+                                               day-names="Sonntag,Montag,Dienstag,Mittwoch,Donnerstag,Freitag,Samstag"
+                                               day-names-short="Son,Mon,Die,Mit,Don,Fre,Sam"
                                                day-names-min="So,Mo,Di,Mi,Do,Fr,Sa"
-                                               duration=""
-                                               maxDate=""
-                                               minDate=""
-                                               monthNames=""
-                                               monthNamesShort=""
-                                               numberOfMonths=""
-                                               showOn=""
-                                               showAnim=""
+                                               duration="fast"
+                                               max-date="+3m"
+                                               min-date="-3m"
+                                               month-names="Januar,Februar,M?rz,April,Mai,Juni,Juli,August,September,Oktober,November,Dezember"
+                                               month-names-short="Jan,Feb,M?r,Apr,Mai,Jun,Jul,Aug,Sep,Okt,Nov,Dez"
+                                               show-on="focus"
+                                               show-anim="show"
+                                               year-suffix="CE"
+                                               disabled="false"
                                                ng-jquery-date-picker/> <br/>
                     </div>
                 </div>
                 <div class="col-xs-3 col-sm-offset-1">
                     <div class="input-group   input-group-sm">
-                        <span class="input-group-addon" id="basic-addon2">@datum</span>
-                        <ng-jquery-date-picker type="text" class="form-control" id="frenchDatePicker" placeholder="'wahlen a datum'"
+                        <span class="input-group-addon" id="basic-addon2">@date</span>
+                        <ng-jquery-date-picker type="text" class="form-control" id="frenchDatePicker" placeholder="'choisir une date'"
                                                aria-describedby="basic-addon2" ng-model="date2"
-                                               date-format="mm.dd.yy"
-                                               dayNames=""
-                                               dayNamesShort=""
-                                               day-names-min="So,Mo,Di,Mi,Do,Fr,Sa"
-                                               duration=""
-                                               maxDate=""
-                                               minDate=""
-                                               monthNames=""
-                                               monthNamesShort=""
-                                               numberOfMonths=""
-                                               showOn=""
-                                               showAnim=""
+                                               date-format="mm.dd.y"
+                                               day-names="dimanche,lundi,mardi,mercredi,jeudi,vendredi,samedi,dimanche"
+                                               day-names-short="dim,lun,mar,mer,jeu,ven,sam"
+                                               day-names-min="di,lu,ma,me,je,ve,sa"
+                                               duration="normal"
+                                               max-date="+4m +1w"
+                                               min-date="-4m -1w"
+                                               month-names="janvier,fevrier,mars,avril,mai,juin,juillet,aout,septembre,octobre,novembre,decembre"
+                                               month-names-short="jan,fev,mar,avr,mai,juin,juil,aout,sep,oct,nov,dec"
+                                               show-on="focus"
+                                               show-anim="slideDown"
+                                               year-suffix="CE"
+                                               disabled="false"
                                                ng-jquery-date-picker/> <br/>
                     </div>
                 </div>
                 <div class="col-xs-3 col-sm-offset-1">
                     <div class="input-group   input-group-sm">
-                        <span class="input-group-addon" id="basic-addon3">@datum</span>
-                        <ng-jquery-date-picker type="text" class="form-control" id="israelDatePicker" placeholder="'wahlen a datum'"
+                        <span class="input-group-addon" id="basic-addon3">@fecha</span>
+                        <ng-jquery-date-picker type="text" class="form-control" id="spanishDatePicker" placeholder="'elegir una fecha'"
                                                aria-describedby="basic-addon3" ng-model="date3"
-                                               date-format="mm.dd.yy"
-                                               dayNames=""
-                                               dayNamesShort=""
-                                               day-names-min="So,Mo,Di,Mi,Do,Fr,Sa"
-                                               duration=""
-                                               maxDate=""
-                                               minDate=""
-                                               monthNames=""
-                                               monthNamesShort=""
-                                               numberOfMonths=""
-                                               showOn=""
-                                               showAnim=""
+                                               date-format="dd.mm.yy"
+                                               day-names="domingo,lunes,martes,miercoles,jueves,viernes,sabado"
+                                               day-names-short="dom,lun,mar,mier,juev,vier,sab"
+                                               day-names-min="do,lu,ma,mi,ju,vi,sa"
+                                               duration="fast"
+                                               max-date="+4m +1w +1d"
+                                               min-date="-4m -1w -1d"
+                                               month-names="enero,febrero,marzo,abril,mayo,junio,julio,agosto,septiembre,octubre,noviembre,diciembre"
+                                               month-names-short="ene,feb,mar,abr,may,jun,jul,ago,sep,oct,nov,dic"
+                                               show-on="focus"
+                                               show-anim="fadeIn"
+                                               year-suffix="CE"
+                                               disabled="disabled_val"
                                                ng-jquery-date-picker/> <br/>
                     </div>
                 </div>
                 </br>
-                <div class="col-xs-3 col-sm-offset-1">
-                    <div class="input-group   input-group-sm">
-                        <span class="input-group-addon" id="basic-addon4">@datum</span>
-                        <ng-jquery-date-picker type="text" class="form-control" id="americaDatePicker" placeholder="'wahlen a datum'"
-                                               aria-describedby="basic-addon4" ng-model="date4"
-                                               date-format="mm.dd.yy"
-                                               dayNames=""
-                                               dayNamesShort=""
-                                               day-names-min="So,Mo,Di,Mi,Do,Fr,Sa"
-                                               duration=""
-                                               maxDate=""
-                                               minDate=""
-                                               monthNames=""
-                                               monthNamesShort=""
-                                               numberOfMonths=""
-                                               showOn=""
-                                               showAnim=""
-                                               ng-jquery-date-picker/> <br/>
-                    </div>
-                </div>
-                <div class="col-xs-3 col-sm-offset-1">
-                    <div class="input-group   input-group-sm">
-                        <span class="input-group-addon" id="basic-addon5">@datum</span>
-                        <ng-jquery-date-picker type="text" class="form-control" id="polandDatePicker" placeholder="'wahlen a datum'"
-                                               aria-describedby="basic-addon5" ng-model="date5"
-                                               date-format="mm.dd.yy"
-                                               dayNames=""
-                                               dayNamesShort=""
-                                               day-names-min="So,Mo,Di,Mi,Do,Fr,Sa"
-                                               duration=""
-                                               maxDate=""
-                                               minDate=""
-                                               monthNames=""
-                                               monthNamesShort=""
-                                               numberOfMonths=""
-                                               showOn=""
-                                               showAnim=""
-                                               ng-jquery-date-picker/> <br/>
-                    </div>
-                </div>
-                <div class="col-xs-3 col-sm-offset-1">
-                    <div class="input-group   input-group-sm">
-                        <span class="input-group-addon" id="basic-addon6">@datum</span>
-                        <ng-jquery-date-picker type="text" class="form-control" id="greeceDatePicker" placeholder="'wahlen a datum'"
-                                               aria-describedby="basic-addon6" ng-model="date6"
-                                               date-format="mm.dd.yy"
-                                               dayNames=""
-                                               dayNamesShort=""
-                                               day-names-min="So,Mo,Di,Mi,Do,Fr,Sa"
-                                               duration=""
-                                               maxDate=""
-                                               minDate=""
-                                               monthNames=""
-                                               monthNamesShort=""
-                                               numberOfMonths=""
-                                               showOn=""
-                                               showAnim=""
-                                               ng-jquery-date-picker/> <br/>
-                    </div>
-                </div>
             </div>
         </div>
     </div>

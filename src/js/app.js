@@ -13,13 +13,13 @@ const MAX_VALUE = 100;
 const MIN_VALUE = 10;
 const REFRESH_TIME = 900;
 angular.module('app', ['ngGage','ngDatePicker']).controller('mainController', function($scope) {
-    $scope.speed          = INIT_SPEED;
-    $scope.heartRate      = INIT_RATE;
-    $scope.electorals     = 70;
-    $scope.grade          = 70;
-    $scope.mandate        = 6;
-    $scope.width          = 0.1;
-    $scope.disabledFlag       = false;
+    $scope.speed              = INIT_SPEED;
+    $scope.heartRate          = INIT_RATE;
+    $scope.electorals         = 70;
+    $scope.grade              = 70;
+    $scope.mandate            = 6;
+    $scope.width              = 0.1;
+    $scope.disabled_val       = false;
     setInterval(function(){
         $scope.$apply(function() {
             $scope.speed = getRandomInt(MIN_VALUE, MAX_VALUE);
@@ -27,7 +27,7 @@ angular.module('app', ['ngGage','ngDatePicker']).controller('mainController', fu
             $scope.electorals = getRandomInt(60, 540);
             $scope.mandate = getRandomInt(4, 120);
             $scope.grade = getRandomInt(55, 100);
-            $scope.disabledFlag = !$scope.disabledFlag;
+            $scope.disabled_val = !$scope.disabled_val;
         });
     }, REFRESH_TIME);
 });

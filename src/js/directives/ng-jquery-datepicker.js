@@ -23,7 +23,7 @@
  * 5.duration: Control the speed at which the datepicker appears, you have 3 options: "slow","normal" and "fast".
  * 6.maxDate/minDate: The maximum selectable date and the minimum selectable date.
  * 7.monthNames/monthNamesShort: The list of month names in their long format , short format and minimised format.
- * 8.numberOfMonths: The number of months to show at once.
+ * 8.yearSuffix : Additional text to display after the year in the month headers.
  * 9.nextText: The text to display for the next/previous month link.
  * 10.showOn/ShowAnim: When the datepicker should appear. The datepicker can appear when the field receives focus ("focus"),
  * when a button is clicked ("button"), or when either event occurs ("both")/The name of the animation used to show and hide the datepicker.
@@ -50,7 +50,6 @@ angular.module('ngDatePicker',[]).
                 minDate: '@',
                 monthNames: '@',
                 monthNamesShort: '@',
-                numberOfMonths: '@',
                 showOn: '@',
                 showAnim: '@',
                 disabled: '@',
@@ -83,9 +82,10 @@ angular.module('ngDatePicker',[]).
             //define the compile function
             compile: function (element, attrs) {
 
-                var ngModelAttr = $parse(attrs.ngModel);
                 var template = "<input type='text' id='" + attrs.id + 'ng-jquery-date-picker'+ "'"+
-                                " class="+attrs.class+" placeholder="+attrs.placeholder+" >" +"</input>";
+                    " class="+attrs.class+" placeholder="+attrs.placeholder+" >" +"</input>";
+
+                var ngModelAttr = $parse(attrs.ngModel);
                 element.replaceWith($(template));
 
                 //return a closure
@@ -101,6 +101,7 @@ angular.module('ngDatePicker',[]).
                     var elements2Array = function (str) {
                         return str.split(',');
                     }
+
                     console.log('scope.dayNamesMin',scope.dayNamesMin);
                     //define datepicker options
                     var options = {
@@ -122,10 +123,10 @@ angular.module('ngDatePicker',[]).
                                          [ "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" ],
                         monthNamesShort: (typeof(scope.monthNamesShort) !==  "undefined") ? elements2Array(scope.monthNamesShort) :
                                         [ "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec" ],
-                        numberOfMonths: scope.numberOfMonths || 1,
+                        numberOfMonths: 1,
                         showOn: scope.showOn || "focus",
                         showAnim: scope.showAnim || "show",
-                        disabled: scope.disabled || false,
+                        disabled: scope.$eval(scope.disabled) || false,
                         appendText: scope.appendText || "",
                         autoSize: scope.autoSize || false,
                         changeMonth: scope.changeMonth || false,
@@ -149,48 +150,49 @@ angular.module('ngDatePicker',[]).
                         weekHeader: scope.weekHeader || "Wk",
                         yearRange: scope.yearRange || "c-10:c+10",
                         yearSuffix: scope.yearSuffix || "",
-                        onClose: updateProcedure,
+                        onClose: updateProcedure
                     }
 
                     //init jquery ui datepicker object
                     element.datepicker(options);
 
                 };
-                //
-                //scope.$watch(modelAccessor, function (val) {
-                //    var date = new Date(val);
-                //    element.datepicker("setDate", date);
-                //});
+            },
+            link: function (scope, element, attrs) {
 
                 //define watchers
-                var initWatchers = scope.$watch( "ready", function(){
-                    //watchers.push( scope.$watch( "defaultDate", function(){
-                    //    console.log('defaultDate',scope.defaultDate);
-                    //    element.datepicker( "option", "defaultDate", scope.defaultDate );
-                    //
-                    //}));
+                scope.$watch( attrs.disabled, function(newValue, oldValue){
+                    if(typeof (newValue) !== "undefined"){
+                        console.log('disabled',newValue);
+                        element.datepicker( "option", "disabled", scope.$eval(newValue) );
+                        return true;
+                    }else{
+                        console.log('current value is undefined!');
+                        return false;
+                    }
+                },true);
 
-                    watchers.push( scope.$watch( "disabled", function(){
-                        console.log('disabled',scope.disabled);
-                        element.datepicker("option","disabled",false);
-                        element.datepicker( "refresh" );
-                    }));
+                scope.$watch('max-date', function(newValue, oldValue){
+                    if(typeof (newValue) !== "undefined"){
+                        console.log('max-date',newValue);
+                        element.datepicker( "option", "max-date", scope.$eval(newValue) );
+                        return true;
+                    }else{
+                        console.log('max value is undefined!');
+                        return false;
+                    }
+                },true);
 
-                    watchers.push( scope.$watch( "maxDate", function(){
-                        console.log('maxDate',scope.maxDate);
-                        element.datepicker( "option", "maxDate", scope.maxDate );
-                        element.datepicker( "refresh" );
-                    }));
-
-                    watchers.push( scope.$watch( "minDate", function(){
-
-                        element.datepicker( "option", "minDate", scope.minDate );
-                        element.datepicker( "refresh" );
-
-                    }));
-
-                });
-                initWatchers();
+                scope.$watch('min-date', function(newValue, oldValue){
+                    if(typeof (newValue) !== "undefined"){
+                        console.log('min-date',newValue);
+                        element.datepicker( "option", "min-date", scope.$eval(newValue) );
+                        return true;
+                    }else{
+                        console.log('min-date is undefined!');
+                        return false;
+                    }
+                },true);
             }
         }
     })
