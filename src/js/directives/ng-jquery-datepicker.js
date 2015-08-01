@@ -110,16 +110,7 @@ angular.module('ngDatePicker',[]).
 
                 return function(scope, element, attrs) {
 
-                    function updateContent() {
-
-                        scope.$apply(function (scope) {
-                            ngModelAttr.assign(scope, new Date(element.datepicker("getDate")));
-                        });
-                    };
-
-                    function elements2Array(str) {
-                        return str.split(',');
-                    };
+                    var watchers = [];
 
                     var options = {
                         inline: scope.$eval(scope.inline) || true,
@@ -167,12 +158,30 @@ angular.module('ngDatePicker',[]).
                         weekHeader: scope.weekHeader || "Wk",
                         yearRange: scope.yearRange || "c-10:c+10",
                         yearSuffix: scope.yearSuffix || "",
-                        onClose: updateContent
+                        onSelect: updateContent,
+                        onClose: updateContent,
+                        onDestroy: clearContent
                     }
+
+                    function updateContent() {
+
+                        scope.$apply(function (scope) {
+                            ngModelAttr.assign(scope, new Date(element.datepicker("getDate")));
+                        });
+                    };
+
+                    function clearContent(){
+                        element.datepicker( "destroy" );
+                        watchers = [];
+                    }
+
+                    function elements2Array(str) {
+                        return str.split(',');
+                    };
 
                     element.datepicker(options);
 
-                    scope.$watch( 'disabled', function(newValue, oldValue){
+                    watchers.push(scope.$watch( 'disabled', function(newValue, oldValue){
                         if(typeof (newValue) !== "undefined" && newValue != oldValue ){
                             console.log('disabled new-value',newValue);
                             element.datepicker( "option", "disabled", scope.$eval(newValue) );
@@ -181,9 +190,9 @@ angular.module('ngDatePicker',[]).
                             console.log('disabled value is undefined!');
                             return false;
                         }
-                    },true);
+                    },true));
 
-                    scope.$watch('max-date', function(newValue, oldValue){
+                    watchers.push(scope.$watch('max-date', function(newValue, oldValue){
                         if(typeof (newValue) !== "undefined" && newValue != oldValue){
                             console.log('max-date new-value',newValue);
                             element.datepicker( "option", "max-date", scope.$eval(newValue) );
@@ -192,9 +201,9 @@ angular.module('ngDatePicker',[]).
                             console.log('max date is undefined!');
                             return false;
                         }
-                    },true);
+                    },true));
 
-                    scope.$watch('min-date', function(newValue, oldValue){
+                    watchers.push(scope.$watch('min-date', function(newValue, oldValue){
                         if(typeof (newValue) !== "undefined" && newValue != oldValue){
                             console.log('min-date new-value',newValue);
                             element.datepicker( "option", "min-date", scope.$eval(newValue) );
@@ -203,7 +212,7 @@ angular.module('ngDatePicker',[]).
                             console.log('min date is undefined!');
                             return false;
                         }
-                    },true);
+                    },true));
 
                 };
             }
