@@ -28,6 +28,7 @@
  * 10.showOn/ShowAnim: When the datepicker should appear. The datepicker can appear when the field receives focus ("focus"),
  * when a button is clicked ("button"), or when either event occurs ("both")/The name of the animation used to show and hide the datepicker.
  * 4 watchers on the following fields: defaultDate/disabled/maxDate/minDate.
+ * short explanation:TODO!
  */
 'use strict';
 angular.module('ngDatePicker',[]).
@@ -88,7 +89,6 @@ angular.module('ngDatePicker',[]).
                 var ngModelAttr = $parse(attrs.ngModel);
                 element.replaceWith($(template));
 
-                //return a closure
                 return function(scope, element, attrs) {
 
                     var updateProcedure = function () {
@@ -102,7 +102,6 @@ angular.module('ngDatePicker',[]).
                         return str.split(',');
                     }
 
-                    console.log('scope.dayNamesMin',scope.dayNamesMin);
                     //define datepicker options
                     var options = {
                         inline: true,
@@ -128,24 +127,24 @@ angular.module('ngDatePicker',[]).
                         showAnim: scope.showAnim || "show",
                         disabled: scope.$eval(scope.disabled) || false,
                         appendText: scope.appendText || "",
-                        autoSize: scope.autoSize || false,
-                        changeMonth: scope.changeMonth || false,
-                        changeYear: scope.changeYear || false,
-                        constrainInput: scope.constrainInput || true,
+                        autoSize: scope.$eval(scope.autoSize) || false,
+                        changeMonth: scope.$eval(scope.changeMonth) || false,
+                        changeYear: scope.$eval(scope.changeYear) || false,
+                        constrainInput: scope.$eval(scope.constrainInput) || true,
                         currentText: scope.currentText || "Today",
                         firstDay: scope.firstDay || 0,
-                        gotoCurrent: scope.gotoCurrent || false,
-                        hideIfNoPrevNext: scope.hideIfNoPrevNext || false,
-                        isRTL: scope.isRTL || false,
-                        navigationAsDateFormat: scope.navigationAsDateFormat || false,
+                        gotoCurrent: scope.$eval(scope.gotoCurrent) || false,
+                        hideIfNoPrevNext: scope.$eval(scope.hideIfNoPrevNext) || false,
+                        isRTL: scope.$eval(scope.isRTL) || false,
+                        navigationAsDateFormat: scope.$eval(scope.navigationAsDateFormat) || false,
                         nextText: '@',
-                        selectOtherMonths: scope.selectOtherMonths || false,
+                        selectOtherMonths: scope.$eval(scope.selectOtherMonths) || false,
                         shortYearCutoff: scope.shortYearCutoff || "+10",
-                        showButtonPanel: scope.showButtonPanel || false,
+                        showButtonPanel: scope.$eval(scope.showButtonPanel) || false,
                         showCurrentAtPos: scope.showCurrentAtPos || 0,
-                        showMonthAfterYear: scope.showMonthAfterYear || false,
-                        showOtherMonths: scope.showOtherMonths || false,
-                        showWeek: scope.showWeek || false,
+                        showMonthAfterYear: scope.$eval(scope.showMonthAfterYear) || false,
+                        showOtherMonths: scope.$eval(scope.showOtherMonths) || false,
+                        showWeek: scope.$eval(scope.showWeek) || false,
                         stepMonths: scope.stepMonths || 1,
                         weekHeader: scope.weekHeader || "Wk",
                         yearRange: scope.yearRange || "c-10:c+10",
@@ -160,36 +159,36 @@ angular.module('ngDatePicker',[]).
             },
             link: function (scope, element, attrs) {
 
-                //define watchers
-                scope.$watch( attrs.disabled, function(newValue, oldValue){
+                //define watchers TODO!
+                scope.$watch( 'disabled', function(newValue, oldValue){
                     if(typeof (newValue) !== "undefined"){
-                        console.log('disabled',newValue);
+                        console.log('disabled new-value',newValue);
                         element.datepicker( "option", "disabled", scope.$eval(newValue) );
                         return true;
                     }else{
-                        console.log('current value is undefined!');
+                        console.log('disabled value is undefined!');
                         return false;
                     }
                 },true);
 
                 scope.$watch('max-date', function(newValue, oldValue){
                     if(typeof (newValue) !== "undefined"){
-                        console.log('max-date',newValue);
+                        console.log('max-date new-value',newValue);
                         element.datepicker( "option", "max-date", scope.$eval(newValue) );
                         return true;
                     }else{
-                        console.log('max value is undefined!');
+                        console.log('max date is undefined!');
                         return false;
                     }
                 },true);
 
                 scope.$watch('min-date', function(newValue, oldValue){
                     if(typeof (newValue) !== "undefined"){
-                        console.log('min-date',newValue);
+                        console.log('min-date new-value',newValue);
                         element.datepicker( "option", "min-date", scope.$eval(newValue) );
                         return true;
                     }else{
-                        console.log('min-date is undefined!');
+                        console.log('min date is undefined!');
                         return false;
                     }
                 },true);
