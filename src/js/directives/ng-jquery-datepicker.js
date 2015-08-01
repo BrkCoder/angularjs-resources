@@ -4,8 +4,8 @@
  * AngularJS directive wrapper
  * which enables you to create
  * dynamic  jquery ui date picker components.
- * Date Modified: 20-7-16
- * Date Created: 1-8-16
+ * Date Modified: 1-8-16
+ * Date Created: 20-7-16
  */
 /**
  * Technical Comments:

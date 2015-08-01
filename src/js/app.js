@@ -1,9 +1,8 @@
 /**
  * Created by Brk
  * main app script.
- * Date Modified: 2-7-16
+ * Date Modified: 1-8-16
  * Date Created: 30-6-16
- * 
  */
 const INIT_VALUE = 50;
 const INIT_SPEED = 20;
