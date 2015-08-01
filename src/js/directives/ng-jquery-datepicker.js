@@ -27,7 +27,7 @@
  * 9.nextText: The text to display for the next/previous month link.
  * 10.showOn/ShowAnim: When the datepicker should appear. The datepicker can appear when the field receives focus ("focus"),
  * when a button is clicked ("button"), or when either event occurs ("both")/The name of the animation used to show and hide the datepicker.
- * 4 watchers on the following fields: defaultDate/disabled/maxDate/minDate .
+ * 4 watchers on the following fields: defaultDate/disabled/maxDate/minDate.
  */
 'use strict';
 angular.module('ngDatePicker',[]).
@@ -156,41 +156,41 @@ angular.module('ngDatePicker',[]).
                     element.datepicker(options);
 
                 };
-
+                //
                 //scope.$watch(modelAccessor, function (val) {
                 //    var date = new Date(val);
                 //    element.datepicker("setDate", date);
                 //});
 
-                //Define watchers
-                //var initWatchers = scope.$watch( "ready", function(){
-                //    watchers.push( scope.$watch( "defaultDate", function(){
-                //        console.log('defaultDate',scope.defaultDate);
-                //        element.datepicker( "option", "defaultDate", scope.defaultDate );
-                //
-                //    }));
-                //
-                //    watchers.push( scope.$watch( "disabled", function(){
-                //        console.log('disabled',scope.disabled);
-                //        element.datepicker("option","disabled",false);
-                //        element.datepicker( "refresh" );
-                //    }));
-                //
-                //    watchers.push( scope.$watch( "maxDate", function(){
-                //        console.log('maxDate',scope.maxDate);
-                //        element.datepicker( "option", "maxDate", scope.maxDate );
-                //        element.datepicker( "refresh" );
-                //    }));
-                //
-                //    watchers.push( scope.$watch( "minDate", function(){
-                //
-                //        element.datepicker( "option", "minDate", scope.minDate );
-                //        element.datepicker( "refresh" );
-                //
-                //    }));
-                //
-                //});
-                //initWatchers();
+                //define watchers
+                var initWatchers = scope.$watch( "ready", function(){
+                    watchers.push( scope.$watch( "defaultDate", function(){
+                        console.log('defaultDate',scope.defaultDate);
+                        element.datepicker( "option", "defaultDate", scope.defaultDate );
+
+                    }));
+
+                    watchers.push( scope.$watch( "disabled", function(){
+                        console.log('disabled',scope.disabled);
+                        element.datepicker("option","disabled",false);
+                        element.datepicker( "refresh" );
+                    }));
+
+                    watchers.push( scope.$watch( "maxDate", function(){
+                        console.log('maxDate',scope.maxDate);
+                        element.datepicker( "option", "maxDate", scope.maxDate );
+                        element.datepicker( "refresh" );
+                    }));
+
+                    watchers.push( scope.$watch( "minDate", function(){
+
+                        element.datepicker( "option", "minDate", scope.minDate );
+                        element.datepicker( "refresh" );
+
+                    }));
+
+                });
+                initWatchers();
             }
         }
     })
