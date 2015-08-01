@@ -7,12 +7,19 @@
  * Date Modified: 2-7-16
  * Date Created: 30-6-16
  */
+/**
+ * Technical Comments:
+ * First we define to which set of components the directive will be trigger by: Element(E) || Attribute(A) || Class(C).
+ * Second we define inner scope for current directive.
+ * Third we define template and link function.
+ */
+'use strict';
 angular.module('ngGage',[])
     .directive('ngJustGage',['$timeout',function($timeout){
 
     return{
-        restrict: 'EA', // restricted only to Elements and Attribute components
-        scope: {        // define inner scope for current directive
+        restrict: 'EA',
+        scope: {
             id:'@',
             class:'@',
             min: '=',
@@ -32,7 +39,7 @@ angular.module('ngGage',[])
         template:'<div id="{{id}}-gage" class="{{class}}"></div>',
         link:function(scope, element, attrs){
             $timeout(function(){
-                //define options
+
                 var options = {
                     id: scope.id+'-gage',
                     min: scope.min || 0,
@@ -48,17 +55,15 @@ angular.module('ngGage',[])
                     refreshAnimationType:  scope.refreshAnimationType,
                     gaugeWidthScale: scope.gaugeWidthScale || 1
                 };
-                //init scope options
+
                 if(scope.options){
                     for(var k in scope.options){
                         options[k] = scope.options[k];
                     }
                 }
 
-                //define gage graph
                 var plot = new JustGage(options);
 
-                //define watcher on specific scope elements:  value & max & min
                 scope.$watch('value',function(currentValue){
                     if(typeof (currentValue) !== "undefined"){
                         plot.refresh(currentValue);

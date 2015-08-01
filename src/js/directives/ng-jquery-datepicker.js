@@ -1,19 +1,46 @@
 /**
  * Created by Brk.
- * ng-jquery-date-picker script
+ * ng-jquery-date-picker script.
+ * AngularJS directive wrapper
+ * which enables you to create
+ * dynamic  jquery ui date picker components.
+ * Date Modified: 20-7-16
+ * Date Created: 1-8-16
+ */
+/**
+ * Technical Comments:
+ * First we define to which set of components the directive will be trigger by: Element(E) || Attribute(A) || Class(C).
+ * Second we define inner scope for current directive.
+ * Third we define template and link function.
+ * In our current case:
+ * The directive will be trigger by Attribute.
+ * The inner scope will contains the following fields:
+ * 1.defaultDate : date to highlight on first opening if the field is blank
+ * 2.altField and altFormat: Alternative field(input element) that is to be updated with
+ * the selected date from the datepicker and altFormat determine the format on which the altField will be show.
+ * 3.dayNames/dayNamesMin/dayNamesShort: The list of day names in their long format , short format and minimised format.
+ * 4.duration: Control the speed at which the datepicker appears, you have 3 options: "slow","normal" and "fast".
+ * 5.maxDate/minDate: The maximum selectable date and the minimum selectable date.
+ * 6.monthNames/monthNamesShort: The list of month names in their long format , short format and minimised format.
+ * 7.numberOfMonths: The number of months to show at once.
+ * 8.nextText/prevText: The text to display for the next/previous month link.
+ * 9.showOn/ShowAnim: When the datepicker should appear. The datepicker can appear when the field receives focus ("focus"),
+ * when a button is clicked ("button"), or when either event occurs ("both")/The name of the animation used to show and hide the datepicker.
+ * 10.buttonImage/buttonImageOnly/buttonText:
+ * 4 watchers on the following fields: defaultDate/disabled/maxDate/minDate.
  */
 'use strict';
 angular.module('ngDatePicker',[]).
     directive('ngJqueryDatePicker',function(){
 
         return{
-            restrict: 'A',  // restricted only to Attribute fields
-            scope:{         // define inner scope with the relevant attributes
+            restrict: 'A',
+            scope:{
                 id:'@',
                 class:'@',
                 title: '@',
                 state: '=',
-                dateValue: '=',
+                defaultDate: '=',
                 disabled: '=',
                 altField: '=',
                 altFormat: '=',
@@ -63,7 +90,7 @@ angular.module('ngDatePicker',[]).
                 var watchers = [];
                 var options = {
                     dateFormat: scope.dateFormat || 'dd.mm.yy',
-                    defaultDate: scope.dateValue || null,
+                    defaultDate: scope.defaultDate || null,
                     disabled: scope.disabled || false,
                     altField: scope.altField || "",
                     altFormat: scope.altFormat || "",
@@ -105,8 +132,6 @@ angular.module('ngDatePicker',[]).
                         if(scope.onSelect && typeof scope.onSelect == "function"){
                             ngModelCtrl.$setViewValue(date);
                             scope.$apply();
-                            var id = attrs.id;
-                            console.log('id',id);
                         }
                     }
                 };
@@ -116,9 +141,9 @@ angular.module('ngDatePicker',[]).
 
                  //Define watchers
                  var initWatchers = scope.$watch( "ready", function(){
-                     watchers.push( scope.$watch( "dateValue", function(){
-                            console.log('dateValue',scope.dateValue);
-                            element.datepicker( "option", "defaultDate", scope.dateValue );
+                     watchers.push( scope.$watch( "defaultDate", function(){
+                            console.log('defaultDate',scope.defaultDate);
+                            element.datepicker( "option", "defaultDate", scope.defaultDate );
 
                      }));
 
