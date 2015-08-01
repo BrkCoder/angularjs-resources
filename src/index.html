@@ -92,12 +92,15 @@
                 </div>
             </div>
             </br>
+        <!-- Create 6 different datepickers -->
             <div class="row datepickers">
                 <div class="col-xs-3 col-sm-offset-1">
                     <div class="input-group   input-group-sm">
-                        <span class="input-group-addon" id="basic-addon1">date</span>
-                        <ng-jquery-date-picker type="text" class="form-control" id="dpicker1" placeholder="Pick a date" aria-describedby="basic-addon1"
-                                                     day-names-min="So,Mo,Di,Mi,Do,Fr,Sa"  ng-model="date1" ng-jquery-date-picker/> <br/>
+                        <span class="input-group-addon" id="basic-addon1">@datum</span>
+                        <ng-jquery-date-picker type="text" class="form-control" id="gpicker1" placeholder="'wahlen a datum'"
+                                               aria-describedby="basic-addon1" ng-model="date1"
+                                               date-format="mm.dd.yy"
+                                               day-names-min="So,Mo,Di,Mi,Do,Fr,Sa"   ng-jquery-date-picker/> <br/>
                     </div>
                 </div>
                 <div class="col-xs-3 col-sm-offset-1">

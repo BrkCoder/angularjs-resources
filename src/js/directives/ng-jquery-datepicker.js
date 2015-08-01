@@ -85,7 +85,7 @@ angular.module('ngDatePicker',[]).
 
                 var ngModelAttr = $parse(attrs.ngModel);
                 var template = "<input type='text' id='" + attrs.id + 'ng-jquery-date-picker'+ "'"+
-                                " class="+attrs.class+" >" +"</input>";
+                                " class="+attrs.class+" placeholder="+attrs.placeholder+" >" +"</input>";
                 element.replaceWith($(template));
 
                 //return a closure
