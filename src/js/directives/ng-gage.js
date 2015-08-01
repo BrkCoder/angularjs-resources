@@ -4,8 +4,8 @@
  * AngularJS directive wrapper
  * which enables you to create
  * dynamic gage components.
- * Date Modified: 1-8-16
- * Date Created: 30-6-16
+ * Date Modified: 1-8-15
+ * Date Created: 30-6-15
  */
 /**
  * Technical Comments:

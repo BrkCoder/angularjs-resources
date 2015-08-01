@@ -4,8 +4,8 @@
  * AngularJS directive wrapper
  * which enables you to create
  * dynamic  jquery ui date picker components.
- * Date Modified: 1-8-16
- * Date Created: 20-7-16
+ * Date Modified: 1-8-15
+ * Date Created: 20-7-15
  */
 /**
  * Technical Comments:
@@ -164,11 +164,11 @@ angular.module('ngDatePicker',[]).
 
                 //define watchers
                 var initWatchers = scope.$watch( "ready", function(){
-                    watchers.push( scope.$watch( "defaultDate", function(){
-                        console.log('defaultDate',scope.defaultDate);
-                        element.datepicker( "option", "defaultDate", scope.defaultDate );
-
-                    }));
+                    //watchers.push( scope.$watch( "defaultDate", function(){
+                    //    console.log('defaultDate',scope.defaultDate);
+                    //    element.datepicker( "option", "defaultDate", scope.defaultDate );
+                    //
+                    //}));
 
                     watchers.push( scope.$watch( "disabled", function(){
                         console.log('disabled',scope.disabled);
