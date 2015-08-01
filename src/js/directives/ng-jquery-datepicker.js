@@ -8,6 +8,15 @@
  * Date Created: 20-7-15
  */
 /**
+ * General comments:
+ * The directive life cycle:
+ * First phase : the compile phase we conduct template DOM manipulation.
+ * the compile function will return linking function.
+ * Second phase: the linking phase,we conduct a registration process of DOM listeners,
+ * we change the content and the behavior of an element after the compilation process has been finished
+ * and the element has been added to the DOM tree.
+ */
+/**
  * Technical Comments:
  * First we define to which set of components the directive will be trigger by: Element(E) || Attribute(A) || Class(C).
  * Second we define inner scope for current directive.
@@ -27,9 +36,17 @@
  * 9.nextText: The text to display for the next/previous month link.
  * 10.showOn/ShowAnim: When the datepicker should appear. The datepicker can appear when the field receives focus ("focus"),
  * when a button is clicked ("button"), or when either event occurs ("both")/The name of the animation used to show and hide the datepicker.
- * 4 watchers on the following fields: defaultDate/disabled/maxDate/minDate.
- * short explanation:TODO!
+ * After defining the inner scope, we define 2 attributes:
+ * replace: 'true'
+ * transclude: 'false'
+ * we have define these attributes in the following manner, because we want to replace
+ * the element with the result of the defined directive,
+ * also we don't require automatic transculation of element's content.
+ * we define the compile method which will return a closure(the linking function).
+ * In the linking function we define all the necessary DOM listeners & jquery objects &
+ * 4 watchers on the following attributes: disabled/max-date/min-date.
  */
+
 'use strict';
 angular.module('ngDatePicker',[]).
     directive('ngJqueryDatePicker',function($parse){
@@ -39,6 +56,7 @@ angular.module('ngDatePicker',[]).
                 id: "@",
                 class: '@',
                 title: '@',
+                inline: '@',
                 dateFormat: '@',
                 defaultDate: '@',
                 altField: '@',
@@ -80,31 +98,31 @@ angular.module('ngDatePicker',[]).
             },
             replace:true,
             transclude: false,
-            //define the compile function
+
             compile: function (element, attrs) {
 
                 var template = "<input type='text' id='" + attrs.id + 'ng-jquery-date-picker'+ "'"+
                     " class="+attrs.class+" placeholder="+attrs.placeholder+" >" +"</input>";
 
                 var ngModelAttr = $parse(attrs.ngModel);
+
                 element.replaceWith($(template));
 
                 return function(scope, element, attrs) {
 
-                    var updateProcedure = function () {
+                    function updateContent() {
 
                         scope.$apply(function (scope) {
                             ngModelAttr.assign(scope, new Date(element.datepicker("getDate")));
                         });
                     };
 
-                    var elements2Array = function (str) {
+                    function elements2Array(str) {
                         return str.split(',');
-                    }
+                    };
 
-                    //define datepicker options
                     var options = {
-                        inline: true,
+                        inline: scope.$eval(scope.inline) || true,
                         dateFormat: scope.dateFormat || 'dd.mm.yy',
                         defaultDate: scope.defaultDate || null,
                         altField: scope.altField || "",
@@ -149,49 +167,45 @@ angular.module('ngDatePicker',[]).
                         weekHeader: scope.weekHeader || "Wk",
                         yearRange: scope.yearRange || "c-10:c+10",
                         yearSuffix: scope.yearSuffix || "",
-                        onClose: updateProcedure
+                        onClose: updateContent
                     }
 
-                    //init jquery ui datepicker object
                     element.datepicker(options);
 
+                    scope.$watch( 'disabled', function(newValue, oldValue){
+                        if(typeof (newValue) !== "undefined" && newValue != oldValue ){
+                            console.log('disabled new-value',newValue);
+                            element.datepicker( "option", "disabled", scope.$eval(newValue) );
+                            return true;
+                        }else{
+                            console.log('disabled value is undefined!');
+                            return false;
+                        }
+                    },true);
+
+                    scope.$watch('max-date', function(newValue, oldValue){
+                        if(typeof (newValue) !== "undefined" && newValue != oldValue){
+                            console.log('max-date new-value',newValue);
+                            element.datepicker( "option", "max-date", scope.$eval(newValue) );
+                            return true;
+                        }else{
+                            console.log('max date is undefined!');
+                            return false;
+                        }
+                    },true);
+
+                    scope.$watch('min-date', function(newValue, oldValue){
+                        if(typeof (newValue) !== "undefined" && newValue != oldValue){
+                            console.log('min-date new-value',newValue);
+                            element.datepicker( "option", "min-date", scope.$eval(newValue) );
+                            return true;
+                        }else{
+                            console.log('min date is undefined!');
+                            return false;
+                        }
+                    },true);
+
                 };
-            },
-            link: function (scope, element, attrs) {
-
-                //define watchers TODO!
-                scope.$watch( 'disabled', function(newValue, oldValue){
-                    if(typeof (newValue) !== "undefined"){
-                        console.log('disabled new-value',newValue);
-                        element.datepicker( "option", "disabled", scope.$eval(newValue) );
-                        return true;
-                    }else{
-                        console.log('disabled value is undefined!');
-                        return false;
-                    }
-                },true);
-
-                scope.$watch('max-date', function(newValue, oldValue){
-                    if(typeof (newValue) !== "undefined"){
-                        console.log('max-date new-value',newValue);
-                        element.datepicker( "option", "max-date", scope.$eval(newValue) );
-                        return true;
-                    }else{
-                        console.log('max date is undefined!');
-                        return false;
-                    }
-                },true);
-
-                scope.$watch('min-date', function(newValue, oldValue){
-                    if(typeof (newValue) !== "undefined"){
-                        console.log('min-date new-value',newValue);
-                        element.datepicker( "option", "min-date", scope.$eval(newValue) );
-                        return true;
-                    }else{
-                        console.log('min date is undefined!');
-                        return false;
-                    }
-                },true);
             }
         }
     })
