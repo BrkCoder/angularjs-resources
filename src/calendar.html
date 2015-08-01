@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+    <meta charset="UTF-8">
+    <title>calendar</title>
+    <!-- Load Stylesheet files -->
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+    <style type="text/css">
+        .column {
+            display: inline-block;
+            width: 550px;
+            height: 200px;
+        }
+    </style>
+    <!-- Load Javascript files -->
+    <script src="js/lib/jquery-1.11.3.min.js"></script>
+    <script src="js/lib/jquery-ui.min.js"></script>
+    <script src="js/lib/angular.min.js"></script>
+    <script src="js/lib/angular-route.min.js"></script>
+    <script src="js/lib/raphael-min.js"></script>
+    <script src="js/lib/justgage.1.0.1.min.js"></script>
+    <script src="js/directives/ng-gage.js"></script>
+    <script src="js/directives/ng-jquery-datepicker.js"></script>
+    <script src="js/app.js"></script>
+    <script>
+        $(function() {
+            $( "#datepicker" ).datepicker();
+        });
+    </script>
+</head>
+<body ng-controller="mainController">
+<input type="text" id="mydatepicker1" class="dpicker" ng-model="date1" ng-jquery-date-picker/>
+<p>Date: <input type="text" id="datepicker"></p>
+</body>
+</html>
