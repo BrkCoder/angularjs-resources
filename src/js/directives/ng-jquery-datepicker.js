@@ -171,7 +171,6 @@ angular.module('ngDatePicker',[]).
                     };
 
                     function clearContent(){
-                        element.datepicker( "destroy" );
                         watchers = [];
                     }
 
