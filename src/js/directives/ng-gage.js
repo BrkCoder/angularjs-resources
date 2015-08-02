@@ -16,7 +16,6 @@
 'use strict';
 angular.module('ngGage',[])
     .directive('ngJustGage',['$timeout',function($timeout){
-
     return{
         restrict: 'EA',
         scope: {

@@ -12,7 +12,7 @@ const MIN_RATE = 104;
 const MAX_VALUE = 100;
 const MIN_VALUE = 10;
 const REFRESH_TIME = 900;
-angular.module('app', ['ngGage','ngDatePicker']).controller('mainController', function($scope) {
+angular.module('app', ['ngGage','ngJqueryUtils']).controller('mainController', function($scope) {
     $scope.speed              = INIT_SPEED;
     $scope.heartRate          = INIT_RATE;
     $scope.electorals         = 70;

@@ -48,8 +48,9 @@
  */
 
 'use strict';
-angular.module('ngDatePicker',[]).
-    directive('ngJqueryDatePicker',function($parse){
+var jUtils = angular.module('ngJqueryUtils',[]);
+
+    jUtils.directive('ngJqueryDatePicker',function($parse){
         return{
             restrict: "E",
             scope:{
@@ -216,4 +217,108 @@ angular.module('ngDatePicker',[]).
                 };
             }
         }
-    })
+    });
+
+    jUtils.directive('ngJqueryProgressbar',function($parse){
+        return {
+            restrict: "E",
+            scope: {
+                id: '@',
+                class: '@',
+                value: '@',
+                max: '@',
+                disabled: '@',
+                width: '@',
+                color: '@',
+                labelText: '@',
+                labelColor: '@'
+            },
+            replace:true,
+            transclude: false,
+            compile: function (element, attrs) {
+
+                var template = "<div id='" + attrs.id + '-progressbar' + "'" + " class=" + attrs.class + ">" + "</div>";
+                var elementId = attrs.id + '-progressbar';
+                element.replaceWith($(template));
+
+                return function (scope, element, attrs) {
+                    var options = {
+                        value: scope.$eval(scope.value) || 0,
+                        max: scope.$eval(scope.max) || 100,
+                        disabled: scope.$eval(scope.disabled) || false,
+                        onChange: processChange,
+                        onProgressbarComplete: processComplete,
+                        onProgressbarCreate: processCreate
+                    }
+
+                    function processChange() {
+                        console.log('progressbar has been changed!');
+                    }
+
+                    function processComplete() {
+                        console.log('progressbar has been completed!');
+                    }
+
+                    function processCreate() {
+                        console.log('progressbar has been created!');
+                    }
+
+                    //init Progressbar element
+                    $(element).progressbar(options);
+
+                    //style Progressbar element
+                    if(typeof (scope.width) !== "undefined" && scope.width != '' ) {
+                        $(element).css('width', scope.width);
+                    }
+                    if(typeof (scope.color) !== "undefined" && scope.color != '' ) {
+                        $("#" + elementId + " " + ".ui-progressbar-value").css('background', scope.color);
+                        $("#" + elementId + " " + ".ui-progressbar-value").css('border', '1px solid '+scope.color);
+                    }
+
+                    //define watchers:
+                    scope.$watch('value', function (newValue, oldValue) {
+                        if (typeof (newValue) !== "undefined" && newValue != oldValue) {
+                            // plot.refresh(currentValue);
+                            return true;
+                        } else {
+                            console.log('current value is undefined!');
+                            return false;
+                        }
+                    }, true);
+
+                    scope.$watch('max', function (newValue, oldValue) {
+                        if (typeof (newValue) !== "undefined" && newValue != oldValue) {
+                            // plot.refresh(scope.value,currentMax);
+                            return true;
+                        } else {
+                            console.log('current max value is undefined!');
+                            return false;
+                        }
+                    }, true);
+
+                    scope.$watch('disabled', function (newValue, oldValue) {
+                        if (typeof (newValue) !== "undefined" && newValue != oldValue) {
+                            // plot.refresh(scope.value,currentMax);
+                            return true;
+                        } else {
+                            console.log('current disabled value is undefined!');
+                            return false;
+                        }
+                    }, true);
+
+                }
+            }
+
+
+        }
+    });
+////Attribute only
+//jUtils.directive('ngToolTip',function($parse){
+//
+//
+//});
+////Attribute and Element only
+//jUtils.directive('ngSpinner',function($parse){
+//
+//
+//});
